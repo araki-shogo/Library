@@ -25,6 +25,7 @@ class CreateLendingsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+                
             $table->foreign('book_id')
                 ->references('id')
                 ->on('books')
