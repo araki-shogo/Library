@@ -11,5 +11,6 @@ class BookController extends Controller
     {
         $datas = Book::all();
         return view('index', ['datas' => $datas]);
+        // 後で貸し出している人を見れるようにしたい
     }
 }
