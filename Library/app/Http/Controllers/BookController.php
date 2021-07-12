@@ -10,7 +10,14 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $datas = Book::all();
-        return view('index', ['datas' => $datas]);
-        // 後で貸し出している人を見れるようにしたい
+        return view('books.index', ['datas' => $datas]);
+    }
+
+    public function index_top() {
+        // topページで本一覧と借りている人を一緒に表示したい
+    }
+
+    public function add(Request $request) {
+
     }
 }

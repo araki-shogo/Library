@@ -15,8 +15,10 @@ use App\Http\Controllers\BookController;
 */
 
 Auth::routes();
-Route::get('/', [BookController::class, 'index']);
-Route::group(['middleware' => ['auth']], function () {
-    //
+Route::get('/', function() {
+    return view('index');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/books', [BookController::class, 'index']);
+});
