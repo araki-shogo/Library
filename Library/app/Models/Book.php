@@ -9,6 +9,10 @@ class Book extends Model
 {
     protected $table = 'books';
 
+    protected $fillable = ['title'];
+
+    public $timestamps = false;
+
     public function getData() {
         $datas = [
             'id' => $this->id,

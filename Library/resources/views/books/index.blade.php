@@ -2,8 +2,7 @@
 
 @section('content')
     @foreach($datas as $data)
-        {{ $data->id }}
-        {{ $data->title }}
+        <a href="/books/edit?id={{$data->id}}" >{{ $data->id }}　{{ $data->title }}</a>
         <br>
     @endforeach
 @endsection

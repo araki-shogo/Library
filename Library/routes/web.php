@@ -21,4 +21,9 @@ Route::get('/', function() {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books', [BookController::class, 'index']);
+    Route::get('/books/add', [BookController::class, 'add']);
+    Route::post('/books/add', [BookController::class, 'create']);
+    Route::get('/books/edit', [BookController::class, 'edit']);
+    Route::post('/books/edit', [BookController::class, 'update']);
+    Route::delete('/books/edit', [BookController::class, 'delete']);
 });
