@@ -18,7 +18,7 @@ class CreateLendingsTable extends Migration
             $table->integer('user_id');
             $table->integer('book_id');
             $table->timestamp('lent_date');
-            $table->timestamp('return_date');
+            $table->timestamp('return_date')->nullable();
             $table->boolean('status');
 
             $table->foreign('user_id')
