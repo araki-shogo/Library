@@ -27,4 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
 
     Route::get('/lendings', [LendingController::class, 'index_all']);
+    Route::post('/lendings/lent', [LendingController::class, 'lent']);
+    Route::post('/lendings/return', [LendingController::class, 'return']);
 });

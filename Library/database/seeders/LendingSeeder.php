@@ -27,7 +27,7 @@ class LendingSeeder extends Seeder
                 'book_id' => '3',
                 'lent_date' => '2021-6-30',
                 'return_date' => null,
-                'status' => '0',
+                'status' => '1',
             ]);
     }
 }

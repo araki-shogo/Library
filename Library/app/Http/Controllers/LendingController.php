@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lending;
-use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use DateTime;
 
 class LendingController extends Controller
 {
@@ -23,5 +25,30 @@ class LendingController extends Controller
     {
         $datas = Lending::get();
         return view('lendings.index', ['datas' => $datas]);
+    }
+
+    // 借りる
+    public function lent(Request $request)
+    {
+        Lending::create([
+            'user_id' => Auth::id(),
+            'book_id' => $request->book_id,
+            'lent_date' => new DateTime(),
+            'status' => 1
+        ]);
+        return redirect('/books');
+    }
+
+    // 返却する
+    public function return(Request $request)
+    {
+        Lending::where('book_id', $request->book_id)
+            ->orderBy('id', 'desc')
+            ->first()
+            ->update([
+                'return_date' => new DateTime(),
+                'status' => 0
+            ]);
+        return redirect('/books');
     }
 }
