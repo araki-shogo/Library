@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lending;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use DateTime;
 
 class LendingController extends Controller
