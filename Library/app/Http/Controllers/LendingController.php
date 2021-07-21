@@ -17,4 +17,11 @@ class LendingController extends Controller
             ->get();
         return view('index', ['datas' => $datas]);
     }
+
+    // 貸し出し履歴
+    public function index_all()
+    {
+        $datas = Lending::get();
+        return view('lendings.index', ['datas' => $datas]);
+    }
 }
