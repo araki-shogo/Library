@@ -44,6 +44,7 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
+    // Lendingモデルに多対1のリレーション
     public function lendings()
     {
         return $this->hasMany(Lending::class);

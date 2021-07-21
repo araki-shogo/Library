@@ -18,6 +18,7 @@ use App\Http\Controllers\LendingController;
 Auth::routes();
 Route::get('/', [LendingController::class, 'index']);
 
+// authのmiddlewareで囲んでおけばログイン必須の画面になる
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books', [BookController::class, 'index']);
     Route::get('/books/add', [BookController::class, 'add']);
