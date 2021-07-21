@@ -13,11 +13,6 @@ class BookController extends Controller
         return view('books.index', ['datas' => $datas]);
     }
 
-    public function index_top()
-    {
-        // topページで本一覧と借りている人を一緒に表示したい
-    }
-
     public function add()
     {
         return view('books.add');

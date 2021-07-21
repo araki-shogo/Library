@@ -8,10 +8,8 @@
 </form>
 <form action="" method="post">
     @csrf
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-
-    <input type="submit" value="削除する">
+    @method('delete')
+    <input type="submit" value="削除">
 </form>
 
 

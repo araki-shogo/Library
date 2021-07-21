@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LendingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Http\Controllers\BookController;
 */
 
 Auth::routes();
-Route::get('/', function() {
-    return view('index');
-});
+Route::get('/', [LendingController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books', [BookController::class, 'index']);
@@ -25,5 +24,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/books/add', [BookController::class, 'create']);
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
     Route::post('/books/edit/{id}', [BookController::class, 'update']);
-    Route::delete('/books/edit', [BookController::class, 'delete']);
+    Route::delete('/books/edit/{id}', [BookController::class, 'delete']);    
 });
