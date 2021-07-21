@@ -4,11 +4,11 @@
     ↓貸出履歴
     <br>
     @foreach($datas as $data)
-        id {{ $data->id }}
-        title {{ $data->book->title }}
-        name {{ $data->user->name }}
-        lent_date {{ $data->lent_date }}
-        return_date {{ $data->return_date }}
+        id：{{ $data->id }}
+        タイトル：{{ $data->book->title }}
+        本：{{ $data->user->name }}
+        貸出日：{{ $data->lent_date }}
+        返却日：{{ $data->return_date }}
         <br>
     @endforeach
     <a href="/">戻る</a>

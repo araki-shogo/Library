@@ -7,10 +7,10 @@
     ↓借りている人と本
     <br>
     @foreach($datas as $data)
-        id{{ $data->id }}
-        title{{ $data->book->title }}
-        username{{ $data->user->name }}
-        lent_date{{ $data->lent_date }}
+        id：{{ $data->id }}
+        タイトル：{{ $data->book->title }}
+        ユーザー：{{ $data->user->name }}
+        貸出日：{{ $data->lent_date }}
         <br>
     @endforeach
 @endsection
