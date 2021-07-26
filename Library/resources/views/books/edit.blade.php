@@ -14,8 +14,8 @@
         @method('delete')
         <input type="submit" value="削除">
     </form>
-    @if($datas->status == 1)
-        <!-- 借りられている場合 -->
+    @if($datas->status == 1 && Auth::id() == $datas->user_id)
+        <!-- 借りられている・自分が借りていた場合 -->
         <form action="/lendings/lent" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
@@ -27,7 +27,7 @@
             <input type="submit" value="返却する">
         </form>
     @else
-        <!-- 借りられていない場合 -->
+        <!-- 誰からも借りられていない場合 -->
         <form action="/lendings/lent" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
