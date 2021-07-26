@@ -11,6 +11,7 @@ class CreateBooksTable extends Migration
      *
      * @return void
      */
+    //本のテーブル
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {

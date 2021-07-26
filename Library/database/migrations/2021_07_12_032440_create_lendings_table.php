@@ -11,18 +11,20 @@ class CreateLendingsTable extends Migration
      *
      * @return void
      */
+
+    //貸し出しテーブル
     public function up()
     {
         Schema::create('lendings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('book_id');
-            $table->timestamp('lent_date');
-            $table->timestamp('return_date')->nullable();
-            $table->boolean('status');
+            $table->timestamp('lent_date'); //貸し出し日
+            $table->timestamp('return_date')->nullable(); //返却日
+            $table->boolean('status'); //0:未貸出、1:貸し出し
 
-            $table->foreign('user_id')
-                ->references('id')
+            $table->foreign('user_id') //user_idカラムを外部キーとする
+                ->references('id')      //Usersテーブルのidカラムが主キー
                 ->on('users')
                 ->onDelete('cascade');
                 

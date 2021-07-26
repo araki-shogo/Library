@@ -10,8 +10,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        $datas = Book::all();
-        return view('books.index', ['datas' => $datas]);
+        $datas = Book::all(); //Booksテーブルの全ての情報を取得
+        return view('books.index', ['datas' => $datas]); //datasという変数を”books.index”で使えるようにする。
     }
 
     public function add()
