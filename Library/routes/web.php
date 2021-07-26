@@ -24,10 +24,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/add', [BookController::class, 'add']);
     Route::post('/books/add', [BookController::class, 'create']);
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
-    Route::post('/books/edit/{id}', [BookController::class, 'update']);
-    Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
 
     Route::get('/lendings', [LendingController::class, 'index_all']);
     Route::post('/lendings/lent', [LendingController::class, 'lent']);
     Route::post('/lendings/return', [LendingController::class, 'return']);
+
+    Route::group(['middleware' => ['auth', 'can:master']], function () {
+        Route::post('/books/edit/{id}', [BookController::class, 'update']);
+        Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
+    });
 });
