@@ -26,6 +26,18 @@
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="返却する">
         </form>
+    @elseif($datas->status == 1 && Auth::id() != $datas->user_id)
+        <!-- 誰かから借りられていた場合 -->
+        <form action="/lendings/lent" method="post">
+            @csrf
+            <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
+            <input type="submit" value="借りる" disabled>
+        </form>
+        <form action="/lendings/return" method="post">
+            @csrf
+            <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
+            <input type="submit" value="返却する" disabled>
+        </form>
     @else
         <!-- 誰からも借りられていない場合 -->
         <form action="/lendings/lent" method="post">
