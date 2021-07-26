@@ -21,7 +21,9 @@ class UserSeeder extends Seeder
                 'name' => 'user' . $i,
                 'email' => 'email' . $i . '@gmail.com',
                 'password' => Hash::make('password'),
+                'permission' => '0'
             ]);
         }
+        DB::table('users')->where('id', '1')->update(['permission' => '1']);
     }
 }
