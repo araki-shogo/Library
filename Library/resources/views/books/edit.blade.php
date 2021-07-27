@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', '本の編集')
 
+@section('content')
 @if(isset($datas->status))
     <!-- 貸出履歴がある場合 -->
     <form action="" method="post">

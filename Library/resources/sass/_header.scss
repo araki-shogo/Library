@@ -1,0 +1,60 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 15px 0;
+
+    &_left {
+        &_title {
+            font-size: 24px;
+            font-family: $font-family;
+            color: $blue;
+        }
+    }
+
+    &_right {
+        display: flex;
+
+        &_link {
+            &_txt {
+                font-size: 18px;
+                font-family: $font-family;
+                color: $blue;
+
+                span {
+                    display: -webkit-inline-box;
+                    max-width: 125px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+
+            &_username {
+                display: unset;
+                position: relative;
+
+                &:hover {
+                    .header_right_link_username_object {
+                        display: block;
+                    }
+                }
+
+                &_object {
+                    display: none;
+                    position: absolute;
+                    top: 20px;
+                    width: 135px;
+                }
+            }
+        }
+
+        &_margin {
+            &:not(:last-child) {
+                margin-right: 25px;
+            }
+        }
+    }
+}

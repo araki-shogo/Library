@@ -1,0 +1,12 @@
+.main {
+    max-width: 1024px;
+    margin: 0 auto;
+
+    &_title {
+        margin: 20px 0;
+        text-align: center;
+        font-size: 24px;
+        font-family: $font-family;
+        color: $blue;
+    }
+}

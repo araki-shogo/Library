@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
+@section('title', '貸出履歴')
+
 @section('content')
-    ↓貸出履歴
-    <br>
     @foreach($datas as $data)
         id：{{ $data->id }}
         タイトル：{{ $data->book->title }}
@@ -11,5 +11,4 @@
         返却日：{{ $data->return_date }}
         <br>
     @endforeach
-    <a href="/">戻る</a>
 @endsection

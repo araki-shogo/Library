@@ -1,5 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none !important;
+}
+
+p {
+  margin: 0 !important;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -33,7 +44,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -56,7 +67,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -5585,7 +5596,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -5687,7 +5698,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10001,4 +10012,60 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.header_left_title {
+  font-size: 24px;
+  font-family: "Hiragino Sans", "Nunito", sans-serif;
+  color: #3490dc;
+}
+.header_right {
+  display: flex;
+}
+.header_right_link_txt {
+  font-size: 18px;
+  font-family: "Hiragino Sans", "Nunito", sans-serif;
+  color: #3490dc;
+}
+.header_right_link_txt span {
+  display: -webkit-inline-box;
+  max-width: 125px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.header_right_link_username {
+  display: unset;
+  position: relative;
+}
+.header_right_link_username:hover .header_right_link_username_object {
+  display: block;
+}
+.header_right_link_username_object {
+  display: none;
+  position: absolute;
+  top: 20px;
+  width: 135px;
+}
+.header_right_margin:not(:last-child) {
+  margin-right: 25px;
+}
+
+.main {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.main_title {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Hiragino Sans", "Nunito", sans-serif;
+  color: #3490dc;
 }
