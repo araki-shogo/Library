@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lending;
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 
@@ -19,11 +20,23 @@ class LendingController extends Controller
         return view('index', ['datas' => $datas]);
     }
 
-    // 貸し出し履歴
+    // 貸し出し履歴, 本一覧を表示
     public function index_all()
     {
-        $datas = Lending::get();
+        // $datas = Lending::all();
+        $datas = Book::all();
         return view('lendings.index', ['datas' => $datas]);
+    }
+
+    // 本を検索する
+    public function search(Request $request)
+    {
+        return view('lendings.index');
+    }
+
+    // 個別の貸出履歴
+    public function history(Request $request)
+    {
     }
 
     // 借りる

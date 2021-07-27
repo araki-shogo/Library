@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
 
     Route::get('/lendings', [LendingController::class, 'index_all']);
+    Route::post('/lendings', [LendingController::class, 'search']);
+    Route::get('/lendings/{id}', [LendingController::class, 'search']);
     Route::post('/lendings/lent', [LendingController::class, 'lent']);
     Route::post('/lendings/return', [LendingController::class, 'return']);
 
