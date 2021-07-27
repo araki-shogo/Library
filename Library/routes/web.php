@@ -21,13 +21,14 @@ Route::get('/', [LendingController::class, 'index']);
 // authのmiddlewareで囲んでおけばログイン必須の画面になる
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books', [BookController::class, 'index']);
+    Route::post('/books', [BookController::class, 'search']);
     Route::get('/books/add', [BookController::class, 'add']);
     Route::post('/books/add', [BookController::class, 'create']);
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
 
     Route::get('/lendings', [LendingController::class, 'index_all']);
     Route::post('/lendings', [LendingController::class, 'search']);
-    Route::get('/lendings/{id}', [LendingController::class, 'search']);
+    Route::get('/lendings/{id}', [LendingController::class, 'history']);
     Route::post('/lendings/lent', [LendingController::class, 'lent']);
     Route::post('/lendings/return', [LendingController::class, 'return']);
 

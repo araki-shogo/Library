@@ -20,23 +20,28 @@ class LendingController extends Controller
         return view('index', ['datas' => $datas]);
     }
 
-    // 貸し出し履歴, 本一覧を表示
+    // 本一覧を表示
     public function index_all()
     {
-        // $datas = Lending::all();
         $datas = Book::all();
         return view('lendings.index', ['datas' => $datas]);
     }
 
-    // 本を検索する
+    // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
-        return view('lendings.index');
+        $datas = Book::where('title', 'like', "%$request->title%")->get();
+        return view('lendings.index', ['datas' => $datas]);
     }
 
     // 個別の貸出履歴
     public function history(Request $request)
     {
+        $datas = Lending::where('book_id', $request->id)
+            ->with('book')
+            ->with('user')
+            ->get();
+        return view('lendings.history', ['datas' => $datas]);
     }
 
     // 借りる
