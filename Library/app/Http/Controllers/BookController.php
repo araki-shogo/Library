@@ -14,6 +14,13 @@ class BookController extends Controller
         return view('books.index', ['datas' => $datas]); //datasという変数を”books.index”で使えるようにする。
     }
 
+    // 本を検索
+    public function search(Request $request)
+    {
+        $datas = Book::where('title', 'like', "%$request->title%")->get();
+        return view('books.index', ['datas' => $datas]);
+    }
+
     public function add()
     {
         return view('books.add');

@@ -4,9 +4,16 @@
 
 @section('content')
     <a href="/books/add">本の追加</a>
+    <br>
+    <br>
+    <form action="" method="post">
+        @csrf
+        <input name="title" type="text">
+        <input type="submit" value="検索する">
+    </form>
+    <br>
     @foreach($datas as $data)
-        <div>
             <a href="/books/edit/{{$data->id}}" >id：{{ $data->id }}　タイトル：{{ $data->title }}</a>
-        </div>
+            <br>
     @endforeach
 @endsection
