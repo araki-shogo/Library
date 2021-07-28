@@ -5,6 +5,7 @@
 @section('content')
 @if(isset($datas->status))
     <!-- 貸出履歴がある場合 -->
+    <a href="/lendings/{{ $datas->book_id }}">貸出履歴</a>
     <form action="" method="post">
         @csrf
         <input name="title" type="text" value="{{ $datas->book->title }}">

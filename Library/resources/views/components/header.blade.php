@@ -29,7 +29,7 @@
                     <p class="header_right_link_txt"><span>{{ Auth::user()->name }}</span>さん</p>
                     <object class="header_right_link_username_object">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
+                            document.getElementById('logout-form').submit();"
                         >
                             <p class="header_right_link_txt">{{ __('ログアウト') }}</p>
                         </a>
