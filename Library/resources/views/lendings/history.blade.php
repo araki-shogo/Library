@@ -8,6 +8,7 @@
             @if($loop->index == 0)
                 <h3 class="main_subtitle">{{ $data->book->title }}</h3>
             @endif
+            
             id：{{ $data->id }}
             タイトル：{{ $data->book->title }}
             ユーザー：{{ $data->user->name }}
@@ -19,6 +20,6 @@
             <br>
         @endforeach
     @else
-        <p>貸出記録はありません</p>
+        データはありません
     @endif
 @endsection

@@ -9,11 +9,15 @@
         <input type="submit" value="検索する">
     </form>
     <br>
-    @foreach($datas as $data)
-        <a href="/lendings/{{ $data->id }}">
-            id：{{ $data->id }}
-            タイトル：{{ $data->title }}
-        </a>
-        <br>
-    @endforeach
+    @if(count($datas) != 0)
+        @foreach($datas as $data)
+            <a href="/lendings/{{ $data->id }}">
+                id：{{ $data->id }}
+                タイトル：{{ $data->title }}
+            </a>
+            <br>
+        @endforeach
+    @else
+        データはありません
+    @endif
 @endsection
