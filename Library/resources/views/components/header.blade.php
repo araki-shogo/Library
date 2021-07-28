@@ -9,6 +9,9 @@
         <a href="/lendings" class="header_right_link header_right_margin">
             <p class="header_right_link_txt">貸出履歴</p>
         </a>
+        <a href="/" class="header_right_link header_right_margin">
+            <p class="header_right_link_txt">貸出中</p>
+        </a>
         @guest
             @if (Route::has('login'))
                 <a href="{{ route('login') }}" class="header_right_link header_right_margin">
