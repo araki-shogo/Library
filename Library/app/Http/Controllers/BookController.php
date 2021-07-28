@@ -37,13 +37,13 @@ class BookController extends Controller
     public function edit(Request $request)
     {
         // 貸出されているかどうか
-        if(DB::table('lendings')->where('book_id', $request->id)->exists()) {
-        $datas = Book::find($request->id)
-            ->lendings()
-            ->orderBy('id', 'desc')
-            ->first();
+        if (DB::table('lendings')->where('book_id', $request->id)->exists()) {
+            $datas = Book::find($request->id)
+                ->lendings()
+                ->orderBy('id', 'desc')
+                ->first();
         } else {
-        $datas = Book::where('id', $request->id)->get()->first();
+            $datas = Book::where('id', $request->id)->get()->first();
         }
         return view('books.edit', ['datas' => $datas]);
     }

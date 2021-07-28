@@ -14,6 +14,7 @@ class LendingController extends Controller
     public function index()
     {
         $datas = Lending::whereNull('return_date')
+            ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
             ->get();
@@ -38,6 +39,7 @@ class LendingController extends Controller
     public function history(Request $request)
     {
         $datas = Lending::where('book_id', $request->id)
+            ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
             ->get();

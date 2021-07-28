@@ -6,7 +6,8 @@
     @if(count($datas) != 0)
         @foreach($datas as $data)
             @if($loop->index == 0)
-                <h3 class="main_subtitle">{{ $data->book->title }}</h3>
+                <a href="/books/edit/{{ $data->book->id }}" class="main_subtitle">{{ $data->book->title }}</a>
+                <br>
             @endif
             
             id：{{ $data->id }}

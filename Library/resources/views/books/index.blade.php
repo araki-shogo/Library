@@ -14,7 +14,7 @@
     <br>
     @if(count($datas) != 0)
         @foreach($datas as $data)
-                <a href="/books/edit/{{$data->id}}" >id：{{ $data->id }}　タイトル：{{ $data->title }}</a>
+                <a href="/books/edit/{{ $data->id }}" >id：{{ $data->id }}　タイトル：{{ $data->title }}</a>
                 <br>
         @endforeach
     @else
