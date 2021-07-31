@@ -17,6 +17,7 @@
             </a>
             <br>
         @endforeach
+        {{ $datas->links('components.pagination') }}
     @else
         データはありません
     @endif

@@ -10,7 +10,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $datas = Book::all(); //Booksテーブルの全ての情報を取得
+        $datas = Book::paginate(15)->withQueryString();
         return view('books.index', ['datas' => $datas]); //datasという変数を”books.index”で使えるようにする。
     }
 
