@@ -17,6 +17,7 @@
                 <a href="/books/edit/{{ $data->id }}" >id：{{ $data->id }}　タイトル：{{ $data->title }}</a>
                 <br>
         @endforeach
+        {{ $datas->links('components.pagination') }}
     @else
         データはありません
     @endif

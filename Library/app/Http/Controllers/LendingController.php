@@ -24,7 +24,7 @@ class LendingController extends Controller
     // 本一覧を表示
     public function index_all()
     {
-        $datas = Book::all();
+        $datas = Book::paginate(15)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
     }
 
