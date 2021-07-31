@@ -24,14 +24,15 @@ class LendingController extends Controller
     // 本一覧を表示
     public function index_all()
     {
-        $datas = Book::paginate(15)->withQueryString();
+        $datas = Book::paginate(3)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
     }
 
     // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->get();
+        $datas = Book::where('title', 'like', "%$request->title%")->paginate(3);
+        $datas->appends(['title' => $request->title]); // queryで検索条件保持
         return view('lendings.index', ['datas' => $datas]);
     }
 
