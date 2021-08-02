@@ -10,14 +10,14 @@ class BookController extends Controller
 {
     public function index()
     {
-        $datas = Book::paginate(15)->withQueryString();
+        $datas = Book::paginate(10)->withQueryString();
         return view('books.index', ['datas' => $datas]); //datasという変数を”books.index”で使えるようにする。
     }
 
     // 本を検索
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->paginate(15);
+        $datas = Book::where('title', 'like', "%$request->title%")->paginate(10);
         return view('books.index', ['datas' => $datas]);
     }
 

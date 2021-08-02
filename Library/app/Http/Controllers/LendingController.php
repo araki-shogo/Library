@@ -17,21 +17,21 @@ class LendingController extends Controller
             ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
-            ->paginate(15);
+            ->paginate(10);
         return view('index', ['datas' => $datas]);
     }
 
     // 本一覧を表示
     public function index_all()
     {
-        $datas = Book::paginate(15)->withQueryString();
+        $datas = Book::paginate(10)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
     }
 
     // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->paginate(15);
+        $datas = Book::where('title', 'like', "%$request->title%")->paginate(10);
         $datas->appends(['title' => $request->title]); // queryで検索条件保持
         return view('lendings.index', ['datas' => $datas]);
     }
