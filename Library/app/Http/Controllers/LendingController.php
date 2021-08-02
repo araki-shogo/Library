@@ -17,7 +17,7 @@ class LendingController extends Controller
             ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
-            ->get();
+            ->paginate(15);
         return view('index', ['datas' => $datas]);
     }
 
@@ -31,7 +31,8 @@ class LendingController extends Controller
     // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->get();
+        $datas = Book::where('title', 'like', "%$request->title%")->paginate(15);
+        $datas->appends(['title' => $request->title]); // queryで検索条件保持
         return view('lendings.index', ['datas' => $datas]);
     }
 
@@ -42,7 +43,7 @@ class LendingController extends Controller
             ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
-            ->get();
+            ->paginate(15);
         return view('lendings.history', ['datas' => $datas]);
     }
 

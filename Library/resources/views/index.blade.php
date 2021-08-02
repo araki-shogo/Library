@@ -4,7 +4,7 @@
 
 @section('content')
     @foreach($datas as $data)
-        <a href="/books/edit/{{ $data->book->id }}">
+        <a href="/lendings/{{ $data->book->id }}">
             {{--id：{{ $data->id }}--}}
             タイトル：{{ $data->book->title }}
             ユーザー：{{ $data->user->name }}
@@ -12,4 +12,5 @@
             <br>
         </a>
     @endforeach
+    {{ $datas->links('components.pagination') }}
 @endsection
