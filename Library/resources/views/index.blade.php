@@ -14,8 +14,8 @@
         </a>
     @endforeach
 
+    <p>自分が借りている本</p>
     @if(Auth::check())
-        <p>自分が借りている本</p>
         @foreach($datas as $data)
             @if($data->user_id == Auth::id())
                 <a href="/lendings/{{ $data->book->id }}">
