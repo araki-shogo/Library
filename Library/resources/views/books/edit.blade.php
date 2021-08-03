@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '本の編集')
+@section('title', '貸出・返却')
 
 @section('content')
 @if(isset($datas->status))

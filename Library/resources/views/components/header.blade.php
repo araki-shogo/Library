@@ -3,6 +3,13 @@
         <p class="header_left_title">CRANE LIBRARY</p>
     </a>
     <nav class="header_right">
+        @if (Route::has('login'))
+            @if(Auth::check() && Auth()->user()->permission == 1)
+                <a href="/users" class="header_right_link header_right_margin">
+                    <p class="header_right_link_txt">ユーザー</p>
+                </a>
+            @endif
+        @endif
         <a href="/books" class="header_right_link header_right_margin">
             <p class="header_right_link_txt">本一覧</p>
         </a>
