@@ -12,8 +12,8 @@
             @endif
             名前：{{ $data->user->name }}
             本：{{ $data->book->title }}
-            貸し出し日：{{ $data->lent_date }}
-            返却日：{{ $data->return_date }}
+            貸し出し日：{{ date('Y年n月j日', strtotime($data->lent_date)) }}
+            返却日：{{ date('Y年n月j日', strtotime($data->return_date)) }}
             <br>
         @endforeach
         <br>
