@@ -8,9 +8,9 @@
             @csrf
             <input name="title" type="text">
             <input type="submit" value="検索する">
+            <br>
         </form>
-        <br>
-    @if(url()->current() == request()->fullUrl())
+    @endif
     @if(count($datas) != 0)
         @foreach($datas as $data)
             <a href="/lendings/{{ $data->id }}" class="main_link">{{ $data->title }}</a>
