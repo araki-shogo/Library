@@ -27,6 +27,7 @@ Route::post('/lendings', [LendingController::class, 'search']);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/add', [BookController::class, 'add']);
     Route::post('/books/add', [BookController::class, 'create']);
+    Route::post('/books/edit/{id}', [BookController::class, 'update']);
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
 
     Route::get('/lendings/{id}', [LendingController::class, 'history']);
@@ -35,7 +36,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     // 管理者用
     Route::group(['middleware' => ['auth', 'can:master']], function () {
-        Route::post('/books/edit/{id}', [BookController::class, 'update']);
         Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
         Route::get('/users', [UserController::class, 'index']);
         Route::get('/users/{id}', [UserController::class, 'edit']);
