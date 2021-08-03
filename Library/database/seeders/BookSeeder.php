@@ -12,12 +12,12 @@ class BookSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('books')->insert([
-                'title' => 'title' . $i,
-            ]);
-        }
-    }
+    // public function run()
+    // {
+    //     for ($i = 1; $i <= 10; $i++) {
+    //         DB::table('books')->insert([
+    //             'title' => 'title' . $i,
+    //         ]);
+    //     }
+    // }
 }
