@@ -15,4 +15,9 @@
         font-family: $font-family;
         color: $blue;
     }
+
+    &_link {
+        display: block;
+        margin: 5px;
+    }
 }

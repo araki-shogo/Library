@@ -14,8 +14,7 @@
     <br>
     @if(count($datas) != 0)
         @foreach($datas as $data)
-                <a href="/books/edit/{{ $data->id }}" >id：{{ $data->id }}　タイトル：{{ $data->title }}</a>
-                <br>
+                <a class="main_link"><a href="/books/edit/{{ $data->id }}" >{{ $data->title }}</a></a>
         @endforeach
         {{ $datas->links('components.pagination') }}
     @else

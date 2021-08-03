@@ -5,17 +5,21 @@
 @section('content')
 @if(isset($datas->status))
     <!-- 貸出履歴がある場合 -->
-    <a href="/lendings/{{ $datas->book_id }}">貸出履歴</a>
-    <form action="" method="post">
-        @csrf
-        <input name="title" type="text" value="{{ $datas->book->title }}">
-        <input type="submit" value="更新する">
-    </form>
-    <form action="" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="削除">
-    </form>
+    <p class="main_subtitle">{{ $datas->book->title }}</p>
+    <a href="/lendings/{{ $datas->book_id }}" class="main_link">貸出履歴</a>
+
+    @if(Auth::check() && Auth()->user()->permission == 1)
+        <form action="" method="post">
+            @csrf
+            <input name="title" type="text" value="{{ $datas->book->title }}">
+            <input type="submit" value="更新する">
+        </form>
+        <form action="" method="post">
+            @csrf
+            @method('delete')
+            <input type="submit" value="削除">
+        </form>
+    @endif
     @if($datas->status == 1 && Auth::id() == $datas->user_id)
         <!-- 借りられている・自分が借りていた場合 -->
         <form action="/lendings/lent" method="post">
@@ -60,11 +64,13 @@
         <input name="title" type="text" value="{{ $datas->title }}">
         <input type="submit" value="更新する">
     </form>
-    <form action="" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="削除">
-    </form>
+    @if(Auth::check() && Auth()->user()->permission == 1)
+        <form action="" method="post">
+            @csrf
+            @method('delete')
+            <input type="submit" value="削除">
+        </form>
+    @endif
     <form action="/lendings/lent" method="post">
         @csrf
         <input name="book_id" type="hidden" value="{{ $datas->id }}">
