@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LendingController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +28,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/add', [BookController::class, 'add']);
     Route::post('/books/add', [BookController::class, 'create']);
     Route::get('/books/edit/{id}', [BookController::class, 'edit']);
+    Route::post('/books/edit/{id}', [BookController::class, 'update']);
 
     Route::get('/lendings/{id}', [LendingController::class, 'history']);
     Route::post('/lendings/lent', [LendingController::class, 'lent']);
     Route::post('/lendings/return', [LendingController::class, 'return']);
 
+    // 管理者用
     Route::group(['middleware' => ['auth', 'can:master']], function () {
-        Route::post('/books/edit/{id}', [BookController::class, 'update']);
         Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
+        Route::get('/users', [UserController::class, 'index']);
+        Route::get('/users/{id}', [UserController::class, 'edit']);
+        Route::post('/users/{id}', [UserController::class, 'delete']);
     });
 });
