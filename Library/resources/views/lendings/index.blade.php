@@ -3,12 +3,14 @@
 @section('title', '貸出履歴')
 
 @section('content')
-    <form action="" method="post">
-        @csrf
-        <input name="title" type="text">
-        <input type="submit" value="検索する">
-    </form>
-    <br>
+    @if(url()->current() == request()->fullUrl())
+        <form action="" method="post">
+            @csrf
+            <input name="title" type="text">
+            <input type="submit" value="検索する">
+        </form>
+        <br>
+    @if(url()->current() == request()->fullUrl())
     @if(count($datas) != 0)
         @foreach($datas as $data)
             <a href="/lendings/{{ $data->id }}" class="main_link">{{ $data->title }}</a>
