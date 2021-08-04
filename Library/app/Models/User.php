@@ -49,4 +49,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lending::class);
     }
+
+    use Notifiable;
+    /**
+     * Slackチャンネルに対する通知をルートする
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }

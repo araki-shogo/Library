@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Lending;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\SlackNotification;
+use App\Models\User;
 use DateTime;
 
 class LendingController extends Controller
@@ -56,6 +58,10 @@ class LendingController extends Controller
             'lent_date' => new DateTime(),
             'status' => 1
         ]);
+
+        $users = new User(['name' => 'aaa']);
+        $users->notify(new SlackNotification());
+        
         return redirect('/books');
     }
 
