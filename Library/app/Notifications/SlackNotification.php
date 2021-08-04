@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Lending;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -17,9 +18,11 @@ class SlackNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title, $name, $status)
     {
-        //
+        $this->title = $title;
+        $this->name = $name;
+        $this->status = $status;
     }
 
     /**
@@ -69,6 +72,6 @@ class SlackNotification extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->content('One of your invoices has been paid!');
+            ->content($this->name . 'さん　' . $this->title . 'を' . $this->status);
     }
 }
