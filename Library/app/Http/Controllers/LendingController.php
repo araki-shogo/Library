@@ -62,9 +62,8 @@ class LendingController extends Controller
         $data = Lending::orderBy('id', 'desc')->first();
         $title = $data->book->title;
         $user = $data->user->name;
-        $status = '借りました';
+        $status = '貸出';
         $data->notify(new SlackNotification($title, $user, $status));
-
         return redirect('/books');
     }
 
@@ -79,14 +78,11 @@ class LendingController extends Controller
                 'status' => 0
             ]);
 
-        $data = Lending::where('book_id', $request->book_id)
-            ->orderBy('id', 'desc')
-            ->first();
+        $data = Lending::where('book_id', $request->book_id)->orderBy('id', 'desc')->first();
         $title = $data->book->title;
         $user = $data->user->name;
-        $status = '返しました';
+        $status = '返却';
         $data->notify(new SlackNotification($title, $user, $status));
-
         return redirect('/books');
     }
 }

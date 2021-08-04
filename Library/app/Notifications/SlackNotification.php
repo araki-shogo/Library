@@ -72,6 +72,9 @@ class SlackNotification extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->content($this->name . 'さん　' . $this->title . 'を' . $this->status);
+            ->attachment(function ($attachment) {
+                $attachment->title($this->status)
+                    ->content('名前: ' . $this->name . 'さん　本: ' . $this->title);
+            });
     }
 }

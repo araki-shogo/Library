@@ -56,6 +56,6 @@ class Lending extends Model
      */
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
 }
