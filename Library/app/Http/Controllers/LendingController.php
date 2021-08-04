@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Lending;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\SlackNotification;
+use App\Models\User;
 use DateTime;
 
 class LendingController extends Controller
@@ -56,6 +58,12 @@ class LendingController extends Controller
             'lent_date' => new DateTime(),
             'status' => 1
         ]);
+
+        $data = Lending::orderBy('id', 'desc')->first();
+        $title = $data->book->title;
+        $user = $data->user->name;
+        $status = '貸出';
+        $data->notify(new SlackNotification($title, $user, $status));
         return redirect('/books');
     }
 
@@ -69,6 +77,12 @@ class LendingController extends Controller
                 'return_date' => new DateTime(),
                 'status' => 0
             ]);
+
+        $data = Lending::where('book_id', $request->book_id)->orderBy('id', 'desc')->first();
+        $title = $data->book->title;
+        $user = $data->user->name;
+        $status = '返却';
+        $data->notify(new SlackNotification($title, $user, $status));
         return redirect('/books');
     }
 }
