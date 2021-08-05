@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Lending;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Book extends Model
 {
@@ -26,5 +28,17 @@ class Book extends Model
             'title' => $this->title,
         ];
         return $datas;
+    }
+
+    use Notifiable;
+    /**
+     * Slackチャンネルに対する通知をルートする
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
     }
 }
