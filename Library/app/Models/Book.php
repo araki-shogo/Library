@@ -11,7 +11,7 @@ class Book extends Model
 {
     protected $table = 'books';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['id', 'title'];
 
     public $timestamps = false;
 
@@ -39,6 +39,6 @@ class Book extends Model
      */
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
 }

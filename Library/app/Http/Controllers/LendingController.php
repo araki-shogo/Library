@@ -24,8 +24,16 @@ class LendingController extends Controller
     }
 
     // 本一覧を表示
-    public function index_all()
+    public function index_all(Request $request)
     {
+        // $this->search($request)よりsessionで検索条件を受け取り検索
+        $data = session('value');
+        if (isset($data)) {
+            $datas = Book::where('title', 'like', '%' . session('value') . '%')->paginate(10);
+            session()->forget('value');
+            return view('books.index', ['datas' => $datas]);
+        }
+
         $datas = Book::paginate(10)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
     }
@@ -33,9 +41,8 @@ class LendingController extends Controller
     // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->paginate(10);
-        $datas->appends(['title' => $request->title]); // queryで検索条件保持
-        return view('lendings.index', ['datas' => $datas]);
+        $session = session(['value' => $request->title]);
+        return redirect('lendings');
     }
 
     // 個別の貸出履歴

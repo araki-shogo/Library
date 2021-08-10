@@ -9,17 +9,25 @@ use App\Notifications\SlackNotification;
 
 class BookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // $this->search($request)よりsessionで検索条件を受け取り検索
+        $data = session('value');
+        if (isset($data)) {
+            $datas = Book::where('title', 'like', '%' . session('value') . '%')->paginate(10);
+            session()->forget('value');
+            return view('books.index', ['datas' => $datas]);
+        }
+
         $datas = Book::paginate(10)->withQueryString();
-        return view('books.index', ['datas' => $datas]); //datasという変数を”books.index”で使えるようにする。
+        return view('books.index', ['datas' => $datas]);
     }
 
     // 本を検索
     public function search(Request $request)
     {
-        $datas = Book::where('title', 'like', "%$request->title%")->paginate(10);
-        return view('books.index', ['datas' => $datas]);
+        $session = session(['value' => $request->title]);
+        return redirect('books');
     }
 
     public function add()
