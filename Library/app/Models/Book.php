@@ -39,6 +39,6 @@ class Book extends Model
      */
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return '';
     }
 }
