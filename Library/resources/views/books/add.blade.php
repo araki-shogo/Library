@@ -6,6 +6,6 @@
     <form action="" method="post">
         @csrf
         <input name="title" type="text">
-        <input type="submit" value="送信する">
+        <input type="submit" value="追加">
     </form>
 @endsection
