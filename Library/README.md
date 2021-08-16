@@ -1,1 +1,1 @@
-`App\Models\Book.php`と`App\Models\Book.php`の`routeNotificationForSlackメソッド`でslack apiのURLをreturnする
+`App\Models\Book.php`と`App\Models\Lending.php`の`routeNotificationForSlackメソッド`でslack apiのURLをreturnする
