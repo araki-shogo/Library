@@ -40,13 +40,6 @@ class BookController extends Controller
         Book::create([
             'title' => $request->title
         ]);
-
-        $data = Book::orderby('id', 'desc')->first();
-        $title = $data->title;
-        $user = auth()->user()->name;
-        $status = '本追加';
-        $data->notify(new SlackNotification($title, $user, $status));
-
         return redirect("books");
     }
 

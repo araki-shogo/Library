@@ -29,16 +29,4 @@ class Book extends Model
         ];
         return $datas;
     }
-
-    use Notifiable;
-    /**
-     * Slackチャンネルに対する通知をルートする
-     *
-     * @param  \Illuminate\Notifications\Notification  $notification
-     * @return string
-     */
-    public function routeNotificationForSlack($notification)
-    {
-        return '';
-    }
 }
