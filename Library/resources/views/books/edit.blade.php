@@ -22,36 +22,36 @@
     @endif
     @if($datas->status == 1 && Auth::id() == $datas->user_id)
         <!-- 借りられている・自分が借りていた場合 -->
-        <form action="/lendings/lent" method="post">
+        <form action="{{ route('lendings.lent') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="借りる" disabled>
         </form>
-        <form action="/lendings/return" method="post">
+        <form action="{{ route('lendings.return') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="返却する">
         </form>
     @elseif($datas->status == 1 && Auth::id() != $datas->user_id)
         <!-- 誰かから借りられていた場合 -->
-        <form action="/lendings/lent" method="post">
+        <form action="{{ route('lendings.lent') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="借りる" disabled>
         </form>
-        <form action="/lendings/return" method="post">
+        <form action="{{ route('lendings.return') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="返却する" disabled>
         </form>
     @else
         <!-- 誰からも借りられていない場合 -->
-        <form action="/lendings/lent" method="post">
+        <form action="{{ route('lendings.lent') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="借りる">
         </form>
-        <form action="/lendings/return" method="post">
+        <form action="{{ route('lendings.return') }}" method="post">
             @csrf
             <input name="book_id" type="hidden" value="{{ $datas->book->id }}">
             <input type="submit" value="返却する" disabled>
@@ -71,7 +71,7 @@
             <input type="submit" value="削除">
         </form>
     @endif
-    <form action="/lendings/lent" method="post">
+    <form action="{{ route('lendings.lent') }}" method="post">
         @csrf
         <input name="book_id" type="hidden" value="{{ $datas->id }}">
         <input type="submit" value="借りる">

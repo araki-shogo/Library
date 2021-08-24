@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
 
     Route::get('/lendings/{id}', [LendingController::class, 'history'])->name('lendings.history');
-    Route::post('/lendings/lent', [LendingController::class, 'lent']);
-    Route::post('/lendings/return', [LendingController::class, 'return']);
+    Route::post('/lendings/lent', [LendingController::class, 'lent'])->name('lendings.lent');
+    Route::post('/lendings/return', [LendingController::class, 'return'])->name('lendings.return');
 
     // 管理者用
     Route::group(['middleware' => ['auth', 'can:master']], function () {
