@@ -17,8 +17,8 @@ class CreateLendingsTable extends Migration
     {
         Schema::create('lendings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('book_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('book_id');
             $table->timestamp('lent_date'); //貸し出し日
             $table->timestamp('return_date')->nullable(); //返却日
             $table->boolean('status'); //0:未貸出、1:貸し出し
