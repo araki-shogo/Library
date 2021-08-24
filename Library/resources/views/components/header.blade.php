@@ -1,5 +1,5 @@
 <header class="header">
-    <a href="/" class="header_left">
+    <a href="{{ route('index') }}" class="header_left">
         <p class="header_left_title">CRANE LIBRARY</p>
     </a>
     <nav class="header_right">
@@ -16,7 +16,7 @@
         <a href="{{ route('lendings') }}" class="header_right_link header_right_margin">
             <p class="header_right_link_txt">貸出履歴</p>
         </a>
-        <a href="/" class="header_right_link header_right_margin">
+        <a href="{{ route('index') }}" class="header_right_link header_right_margin">
             <p class="header_right_link_txt">貸出中</p>
         </a>
         @guest

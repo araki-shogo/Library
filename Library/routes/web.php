@@ -17,7 +17,7 @@ use App\Http\Controllers\UserController;
 */
 
 Auth::routes();
-Route::get('/', [LendingController::class, 'index']);
+Route::get('/', [LendingController::class, 'index'])->name('index');
 Route::get('/books', [BookController::class, 'index'])->name('books');
 Route::post('/books', [BookController::class, 'search']);
 Route::get('/lendings', [LendingController::class, 'index_all'])->name('lendings');
