@@ -11,7 +11,7 @@
     </form>
     @if(count($datas) != 0)
         @foreach($datas as $data)
-            <a href="/lendings/{{ $data->id }}" class="main_link">{{ $data->title }}</a>
+            <a href="{{ route('lendings.history', ['id' => $data->id]) }}" class="main_link">{{ $data->title }}</a>
         @endforeach
         {{ $datas->links('components.pagination') }}
     @else

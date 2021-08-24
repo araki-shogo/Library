@@ -5,7 +5,7 @@
 @section('content')
     <p>借りられている本</p>
     @foreach($datas as $data)
-        <a href="/lendings/{{ $data->book->id }}">
+        <a href="{{ route('lendings.history', ['id' => $data->book->id]) }}">
             <p>
                 {{ $data->book->title }}
                 {{ $data->user->name }}
@@ -18,7 +18,7 @@
     @if(Auth::check())
         @foreach($datas as $data)
             @if($data->user_id == Auth::id())
-                <a href="/lendings/{{ $data->book->id }}">
+                <a href="{{ route('lendings.history', ['id' => $data->book->id]) }}">
                     <p>
                         {{ $data->book->title }}
                         貸出日：{{ date('Y年n月j日', strtotime($data->lent_date)) }}

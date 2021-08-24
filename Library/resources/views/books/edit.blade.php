@@ -6,7 +6,7 @@
 @if(isset($datas->status))
     <!-- 貸出履歴がある場合 -->
     <p class="main_subtitle">{{ $datas->book->title }}</p>
-    <a href="/lendings/{{ $datas->book_id }}" class="main_link">貸出履歴</a>
+    <a href="{{ route('lendings.history', ['id' => $datas->book_id]) }}" class="main_link">貸出履歴</a>
 
     @if(Auth::check() && Auth()->user()->permission == 1)
         <form action="" method="post">

@@ -18,27 +18,27 @@ use App\Http\Controllers\UserController;
 
 Auth::routes();
 Route::get('/', [LendingController::class, 'index']);
-Route::get('/books', [BookController::class, 'index']);
+Route::get('/books', [BookController::class, 'index'])->name('books');
 Route::post('/books', [BookController::class, 'search']);
-Route::get('/lendings', [LendingController::class, 'index_all']);
+Route::get('/lendings', [LendingController::class, 'index_all'])->name('lendings');
 Route::post('/lendings', [LendingController::class, 'search']);
 
 // authのmiddlewareで囲んでおけばログイン必須の画面になる
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/books/add', [BookController::class, 'add']);
+    Route::get('/books/add', [BookController::class, 'add'])->name('books.add');
     Route::post('/books/add', [BookController::class, 'create']);
     Route::post('/books/edit/{id}', [BookController::class, 'update']);
-    Route::get('/books/edit/{id}', [BookController::class, 'edit']);
+    Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
 
-    Route::get('/lendings/{id}', [LendingController::class, 'history']);
+    Route::get('/lendings/{id}', [LendingController::class, 'history'])->name('lendings.history');
     Route::post('/lendings/lent', [LendingController::class, 'lent']);
     Route::post('/lendings/return', [LendingController::class, 'return']);
 
     // 管理者用
     Route::group(['middleware' => ['auth', 'can:master']], function () {
         Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
-        Route::get('/users', [UserController::class, 'index']);
-        Route::get('/users/{id}', [UserController::class, 'edit']);
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
         Route::post('/users/{id}', [UserController::class, 'delete']);
     });
 });

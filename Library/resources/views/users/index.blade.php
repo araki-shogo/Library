@@ -4,7 +4,7 @@
 
 @section('content')
         @foreach($datas as $data)
-            <a href="/users/{{ $data->id }}" class="main_link">
+            <a href="{{ route('users.edit', ['id' => $data->id]) }}" class="main_link">
                 {{ $data->name }}
             </a>
         @endforeach

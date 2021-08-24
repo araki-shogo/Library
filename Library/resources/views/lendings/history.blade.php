@@ -6,7 +6,7 @@
     @if(count($datas) != 0)
         @foreach($datas as $data)
             @if($loop->index == 0)
-                <a href="/books/edit/{{ $data->book->id }}" class="main_subtitle">{{ $data->book->title }}</a>
+                <a href="{{ route('books.edit', ['id' => $data->book->id]) }}" class="main_subtitle">{{ $data->book->title }}</a>
                 <br>
             @endif
             
