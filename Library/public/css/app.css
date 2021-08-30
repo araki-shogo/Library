@@ -10078,6 +10078,34 @@ h3 {
   display: block;
   margin: 5px;
 }
+.main_table th {
+  padding: 10px 0;
+  color: #3490dc;
+}
+.main_table th:not(:last-child) {
+  padding-right: 50px;
+}
+.main_table tr:first-child {
+  border-bottom: 2px solid #3490dc;
+}
+.main_table_line:not(:last-child) {
+  border-bottom: 1px solid #3490dc;
+}
+.main_table td {
+  padding: 7.5px 0 7.5px;
+  color: #3490dc;
+}
+.main_table td:first-child {
+  display: -webkit-inline-box;
+  max-width: 635px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.main_table td:not(:last-child) {
+  margin-right: 30px;
+  padding-right: 50px;
+}
 
 .paginationWrap {
   display: flex;

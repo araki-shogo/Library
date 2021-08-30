@@ -10,7 +10,7 @@
                 <br>
             @endif
         @endforeach
-        <table>
+        <table class="main_table">
             <tbody>
                 <tr>
                     <th>本</th>
@@ -19,7 +19,7 @@
                     <th>返却日</th>
                 </tr>
                 @foreach($datas as $data)
-                <tr>
+                <tr class="main_table_line">
                     <td>{{ $data->book->title }}</td>
                     <td>{{ $data->user->name }}</td>
                     <td>{{ date('Y年n月j日', strtotime($data->lent_date)) }}</td>
