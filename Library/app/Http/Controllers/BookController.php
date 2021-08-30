@@ -23,7 +23,6 @@ class BookController extends Controller
         return view('books.index', ['datas' => $datas]);
     }
 
-    // 本を検索
     public function search(Request $request)
     {
         $session = session(['value' => $request->title]);

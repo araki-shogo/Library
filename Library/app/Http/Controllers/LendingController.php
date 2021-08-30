@@ -23,7 +23,6 @@ class LendingController extends Controller
         return view('index', ['datas' => $datas]);
     }
 
-    // 本一覧を表示
     public function index_all(Request $request)
     {
         // $this->search($request)よりsessionで検索条件を受け取り検索
@@ -38,7 +37,6 @@ class LendingController extends Controller
         return view('lendings.index', ['datas' => $datas]);
     }
 
-    // 貸出履歴のある本を検索する
     public function search(Request $request)
     {
         $session = session(['value' => $request->title]);

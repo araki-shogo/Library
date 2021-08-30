@@ -23,7 +23,6 @@ Route::post('/books', [BookController::class, 'search']);
 Route::get('/lendings', [LendingController::class, 'index_all'])->name('lendings');
 Route::post('/lendings', [LendingController::class, 'search']);
 
-// authのmiddlewareで囲んでおけばログイン必須の画面になる
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/add', [BookController::class, 'add'])->name('books.add');
     Route::post('/books/add', [BookController::class, 'create']);
@@ -34,7 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/lendings/lent', [LendingController::class, 'lent'])->name('lendings.lent');
     Route::post('/lendings/return', [LendingController::class, 'return'])->name('lendings.return');
 
-    // 管理者用
     Route::group(['middleware' => ['auth', 'can:master']], function () {
         Route::delete('/books/edit/{id}', [BookController::class, 'delete']);
         Route::get('/users', [UserController::class, 'index'])->name('users');

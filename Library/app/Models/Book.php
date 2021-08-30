@@ -15,7 +15,6 @@ class Book extends Model
 
     public $timestamps = false;
 
-    // Lendingrモデルに多対1のリレーション
     public function lendings()
     {
         return $this->hasMany(Lending::class);

@@ -22,14 +22,11 @@ class Lending extends Model
 
     public $timestamps = false;
 
-    // Userモデルに1対多のリレーション
-    // 使いた外部キーは2つめに設定する
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Bookモデルに1対多のリレーション
     public function book()
     {
         return $this->belongsTo(Book::class, 'book_id');
