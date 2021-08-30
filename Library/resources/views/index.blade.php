@@ -31,15 +31,14 @@
                     <th>本</th>
                     <th>貸出日</th>
                 </tr>
-                @if($data->user_id == Auth::id())
                     @foreach($datas as $data)
+                    @if($datas->user_id == Auth::id())
                     <tr data-href="{{ route('lendings.history', ['id' => $data->book->id]) }}" class="main_table_line target">
                         <td>{{ $data->book->title }}</td>
                         <td>{{ date('Y年n月j日', strtotime($data->lent_date)) }}</td>
                     </tr>
+                    @endif
                     @endforeach
-                @endif
-
             </tbody>
         </table>
     @endif
