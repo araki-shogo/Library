@@ -44,7 +44,7 @@
         <form action="" method="post">
             @csrf
             <input type="hidden" value="{{ $users->id }}">
-            <input type="submit" value="ユーザーを削除">
+            <input type="submit" value="ユーザーを削除" id="delete">
         </form>
     @endif
 @endsection

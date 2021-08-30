@@ -17,7 +17,7 @@
         <form action="" method="post">
             @csrf
             @method('delete')
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" id="delete">
         </form>
     @endif
     @if($datas->status == 1 && Auth::id() == $datas->user_id)
@@ -68,7 +68,7 @@
         <form action="" method="post">
             @csrf
             @method('delete')
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" id="delete">
         </form>
     @endif
     <form action="{{ route('lendings.lent') }}" method="post">

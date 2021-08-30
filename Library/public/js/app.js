@@ -7,7 +7,13 @@
   \*****************************/
 /***/ (() => {
 
+$('#delete').click(function () {
+  var result = confirm('削除しますか？');
 
+  if (result == false) {
+    return false;
+  }
+});
 
 /***/ }),
 
