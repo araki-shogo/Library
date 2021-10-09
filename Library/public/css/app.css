@@ -10076,6 +10076,9 @@ h3 {
 }
 .main_link {
   display: block;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
   margin: 5px;
 }
 .main_table th {
