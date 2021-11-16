@@ -15,11 +15,13 @@ class BookController extends Controller
         $data = session('value');
         if (isset($data)) {
             $datas = Book::where('title', 'like', '%' . session('value') . '%')->paginate(10);
-            session()->forget('value');
             return view('books.index', ['datas' => $datas]);
         }
 
-        $datas = Book::paginate(10)->withQueryString();
+        $datas = Book::paginate(20)->withQueryString();
+        if (isset($data)) {
+            session()->forget('value');
+        }
         return view('books.index', ['datas' => $datas]);
     }
 
