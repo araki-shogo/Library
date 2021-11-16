@@ -32,12 +32,12 @@
                     <th>貸出日</th>
                 </tr>
                     @foreach($datas as $data)
-                    @if($datas->user_id == Auth::id())
-                    <tr data-href="{{ route('lendings.history', ['id' => $data->book->id]) }}" class="main_table_line target">
-                        <td>{{ $data->book->title }}</td>
-                        <td>{{ date('Y年n月j日', strtotime($data->lent_date)) }}</td>
-                    </tr>
-                    @endif
+                        @if($data->user_id == Auth::id())
+                            <tr data-href="{{ route('lendings.history', ['id' => $data->book->id]) }}" class="main_table_line target">
+                                <td>{{ $data->book->title }}</td>
+                                <td>{{ date('Y年n月j日', strtotime($data->lent_date)) }}</td>
+                            </tr>
+                        @endif
                     @endforeach
             </tbody>
         </table>
