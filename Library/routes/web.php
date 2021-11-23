@@ -19,9 +19,14 @@ use App\Http\Controllers\UserController;
 Auth::routes();
 Route::get('/', [LendingController::class, 'index'])->name('index');
 Route::get('/books', [BookController::class, 'index'])->name('books');
-Route::post('/books', [BookController::class, 'search']);
+Route::post('/books', [BookController::class, 'index_search']);
+Route::get('/books/search', [BookController::class, 'search_index']);
+Route::post('/books/search', [BookController::class, 'search']);
 Route::get('/lendings', [LendingController::class, 'index_all'])->name('lendings');
-Route::post('/lendings', [LendingController::class, 'search']);
+Route::post('/lendings', [LendingController::class, 'index_search']);
+Route::get('/lendings/search', [LendingController::class, 'search_index']);
+Route::post('/lendings/search', [LendingController::class, 'search']);
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/books/add', [BookController::class, 'add'])->name('books.add');

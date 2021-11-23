@@ -13,6 +13,7 @@ use DateTime;
 class LendingController extends Controller
 {
     // 貸出中の本を表示
+    // ルート
     public function index()
     {
         $datas = Lending::whereNull('return_date')
@@ -23,26 +24,30 @@ class LendingController extends Controller
         return view('index', ['datas' => $datas]);
     }
 
+    // lendings
     public function index_all(Request $request)
     {
-        // $this->search($request)よりsessionで検索条件を受け取り検索
-        $data = session('value');
-        if (isset($data)) {
-            $datas = Book::where('title', 'like', '%' . session('value') . '%')->paginate(10);
-            return view('books.index', ['datas' => $datas]);
-        }
-
-        $datas = Book::paginate(20)->withQueryString();
-        if (isset($data)) {
-            session()->forget('value');
-        }
+        session()->forget('value');
+        $datas = Book::paginate(10)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
+    }
+
+    public function index_search(Request $request)
+    {
+        $session = session(['value' => $request->title]);
+        return redirect('/lendings/search');
+    }
+
+    public function search_index() {
+        $data = session('value');
+        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(10);
+        return view('lendings.search', ['datas' => $datas]);
     }
 
     public function search(Request $request)
     {
         $session = session(['value' => $request->title]);
-        return redirect('lendings');
+        return redirect('/lendings/search');
     }
 
     // 個別の貸出履歴

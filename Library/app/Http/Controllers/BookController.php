@@ -5,30 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\DB;
-use App\Notifications\SlackNotification;
 
 class BookController extends Controller
 {
     public function index(Request $request)
     {
-        // $this->search($request)よりsessionで検索条件を受け取り検索
-        $data = session('value');
-        if (isset($data)) {
-            $datas = Book::where('title', 'like', '%' . session('value') . '%')->paginate(10);
-            return view('books.index', ['datas' => $datas]);
-        }
-
-        $datas = Book::paginate(20)->withQueryString();
-        if (isset($data)) {
-            session()->forget('value');
-        }
+        session()->forget('value');
+        $datas = Book::paginate(10)->withQueryString();
         return view('books.index', ['datas' => $datas]);
+    }
+
+    public function index_search(Request $request)
+    {
+        $session = session(['value' => $request->title]);
+        return redirect('/books/search');
+    }
+
+    public function search_index() {
+        $data = session('value');
+        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(10);
+        return view('/books/search', ['datas' => $datas]);
     }
 
     public function search(Request $request)
     {
         $session = session(['value' => $request->title]);
-        return redirect('books');
+        return redirect('/books/search');
     }
 
     public function add()
@@ -41,7 +43,7 @@ class BookController extends Controller
         Book::create([
             'title' => $request->title
         ]);
-        return redirect("books");
+        return redirect("/books");
     }
 
     public function edit(Request $request)
@@ -63,12 +65,12 @@ class BookController extends Controller
         Book::where('id', $request->id)->update(
             ['title' => $request->title]
         );
-        return redirect("books");
+        return redirect("/books");
     }
 
     public function delete(Request $request)
     {
         Book::where('id', $request->id)->delete();
-        return redirect('books');
+        return redirect('/books');
     }
 }
