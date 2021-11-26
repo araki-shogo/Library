@@ -28,7 +28,7 @@ class LendingController extends Controller
     public function index_all(Request $request)
     {
         session()->forget('value');
-        $datas = Book::paginate(10)->withQueryString();
+        $datas = Book::paginate(20)->withQueryString();
         return view('lendings.index', ['datas' => $datas]);
     }
 
@@ -57,7 +57,7 @@ class LendingController extends Controller
             ->orderBy('id', 'desc')
             ->with('book')
             ->with('user')
-            ->paginate(15);
+            ->paginate(20);
         return view('lendings.history', ['datas' => $datas]);
     }
 

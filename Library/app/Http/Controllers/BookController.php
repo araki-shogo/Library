@@ -11,7 +11,7 @@ class BookController extends Controller
     public function index(Request $request)
     {
         session()->forget('value');
-        $datas = Book::paginate(10)->withQueryString();
+        $datas = Book::paginate(20)->withQueryString();
         return view('books.index', ['datas' => $datas]);
     }
 
@@ -23,7 +23,7 @@ class BookController extends Controller
 
     public function search_index() {
         $data = session('value');
-        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(10);
+        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(20);
         return view('/books/search', ['datas' => $datas]);
     }
 
