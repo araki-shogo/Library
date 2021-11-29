@@ -40,7 +40,7 @@ class LendingController extends Controller
 
     public function search_index() {
         $data = session('value');
-        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(10);
+        $datas = Book::where('title', 'like', '%' . $data . '%')->paginate(20);
         return view('lendings.search', ['datas' => $datas]);
     }
 
